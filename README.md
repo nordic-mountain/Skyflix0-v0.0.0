@@ -4,13 +4,13 @@ Skyflix 4.0.2 has more improvements and features!
 
 # 🚀 Moduals
 
-. tkinter
-. customtkinter
-. pytube
-. requests
-. youtube_dl
-. re
-. os
+tkinter,
+customtkinter,
+pytube,
+requests,
+youtube_dl,
+re,
+os
 
 # 💥 Features
 
