@@ -13,7 +13,7 @@ youtube_dl,
 re,
 os
 
-# 💥 Features
+# 😎 Features
 
 Here are the new features!
 First it has a more improved graphics with customtkinter.
