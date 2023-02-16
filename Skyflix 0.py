@@ -15,28 +15,28 @@ app.geometry("1100x700")
 app.title("Skyflix 0")
 
 class AppMain():
-    Logo = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\Logo.png"))
-    SkyflixWord = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\SkyFlix.png"))
-    HomeWord = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\Home.png"))
-    SettingsWord = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\Settings.png"))
-    sideBarImage = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\Side Bar.png"))
-    SettingslogoButton = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\settings logo.png"))
-    ProfilePic = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\profile pic.png"))
-    bgTopImage = PhotoImage(file=os.path.join("Images",r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\Images\Bg.png"))
+    Logo = PhotoImage(file=os.path.join("Images",r"Logo.png"))
+    SkyflixWord = PhotoImage(file=os.path.join("Images",r"SkyFlix.png"))
+    HomeWord = PhotoImage(file=os.path.join("Images",r"Home.png"))
+    SettingsWord = PhotoImage(file=os.path.join("Images",r"Settings.png"))
+    sideBarImage = PhotoImage(file=os.path.join("Images",r"Side Bar.png"))
+    SettingslogoButton = PhotoImage(file=os.path.join("Images",r"logo.png"))
+    ProfilePic = PhotoImage(file=os.path.join("Images",r"profile pic.png"))
+    bgTopImage = PhotoImage(file=os.path.join("Images",r"Bg.png"))
     
     channels = [
                 # New Video
-                "https://www.youtube.com/@Danny-Gonzalez",
-                "https://www.youtube.com/@ryan",
-                "https://www.youtube.com/@NetworkChuck",
-                "https://www.youtube.com/user/mrbeast6000",
-                "https://www.youtube.com/@DailyDoseOfInternet",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
                 
                 # Cartoons
-                "https://www.youtube.com/@cartoonnetworkuk",
-                "https://www.youtube.com/user/ElmoreStream",
-                "https://www.youtube.com/channel/UCrFslqncMIdjD2WfB6pAcEg",
-                "https://www.youtube.com/channel/UCFuU-5B1eKAWaTeLUu3JuyA"
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@Channel"
                 ]
     
     # tools
@@ -47,7 +47,7 @@ class AppMain():
         return info["title"]
         
     def downloadVid(url):
-        YouTube(url).streams.get_highest_resolution().download(r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\video")
+        YouTube(url).streams.get_highest_resolution().download(r"\Skyflix\video")
     
     def clear():
         for widgets in app.winfo_children():
@@ -60,7 +60,7 @@ class AppMain():
         for x in range(len(charters)):
             title = title.replace(charters[x], "")
         print(title)
-        os.startfile(f"C:\\Users\\Gianclarence Solas\\Desktop\\python books\\Skyflix\\video\\{title}.mp4")
+        os.startfile(f"\\Skyflix\\video\\{title}.mp4")
         
     def getLastestVid(channel):
         channel = channel
