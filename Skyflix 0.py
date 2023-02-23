@@ -1,68 +1,104 @@
-# Skyflix
+# Skyflix 0.py
 from tkinter import *
 import customtkinter as ctk
 from pytube import YouTube
+import random
 import requests
-import youtube_dl
 import re
 import os
 
-ctk.set_appearance_mode("dark") 
+# Appearance
+ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
+# App
 app = ctk.CTk()
 app.geometry("1100x700")
 app.title("Skyflix 0")
+app.resizable(False, False)
 
+# Main class
 class AppMain():
+    # Image vars
     Logo = PhotoImage(file=os.path.join("Images",r"Logo.png"))
     SkyflixWord = PhotoImage(file=os.path.join("Images",r"SkyFlix.png"))
     HomeWord = PhotoImage(file=os.path.join("Images",r"Home.png"))
     SettingsWord = PhotoImage(file=os.path.join("Images",r"Settings.png"))
     sideBarImage = PhotoImage(file=os.path.join("Images",r"Side Bar.png"))
-    SettingslogoButton = PhotoImage(file=os.path.join("Images",r"logo.png"))
+    SettingslogoButton = PhotoImage(file=os.path.join("Images",r"settings logo.png"))
     ProfilePic = PhotoImage(file=os.path.join("Images",r"profile pic.png"))
     bgTopImage = PhotoImage(file=os.path.join("Images",r"Bg.png"))
     
+    # Channel lists
     channels = [
                 # New Video
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                 "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
                 
                 # Cartoons
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel",
-                "https://www.youtube.com/@Channel"
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
                 ]
     
     # tools
+    
+    def Greating():
+        compliments = ["You're a ray of sunshine!",
+                       "You have a heart of gold!",
+                       "You're a great listener!",
+                       "You're amazing and inspiring!",
+                       "You're a true gem!",
+                       "You're an incredible friend!",
+                       "You're a fantastic team player!",
+                       "You're so creative and innovative!",
+                       "You have an infectious enthusiasm!",
+                       "You have a great sense of humor!",
+                       "You have a beautiful soul!",
+                       "You're a problem-solving genius!",
+                       "You're an absolute pleasure to be around!",
+                       "You're a natural born leader!",
+                       "You're a hard worker and dedicated!",
+                       "You always have a positive attitude!",
+                       "You have a remarkable talent!",
+                       "You inspire others with your actions!",
+                       "You're a valuable asset to any team!",
+                       "You're a kind and caring individual!"]
+        ranComliment = random.choice(compliments)
+        Label = ctk.CTkLabel(master=app, text=ranComliment)
+        Label.place(x=470, y=650)
+    
     def getTitle(url):
+        """Get the youtube links title."""
         url = url
-        ydl = youtube_dl.YoutubeDL()
-        info = ydl.extract_info(url, download=False)
-        return info["title"]
+        Title = YouTube(url=url).title
+        return Title       
         
     def downloadVid(url):
-        YouTube(url).streams.get_highest_resolution().download(r"\Skyflix\video")
+        """Download the youtube link."""
+        YouTube(url).streams.get_highest_resolution().download(r"video")
     
     def clear():
+        """Clear all th wigets in the screen."""
         for widgets in app.winfo_children():
             widgets.destroy()
             
     def playVid(url):
+        """Play the video."""
         charters = ["|", "'", "?", ",", ":", "~", "#", "$", "%", "^", "/", '"']
         AppMain.downloadVid(url)
         title = AppMain.getTitle(url=url)
         for x in range(len(charters)):
             title = title.replace(charters[x], "")
         print(title)
-        os.startfile(f"\\Skyflix\\video\\{title}.mp4")
+        os.startfile(f"{title}.mp4")
         
     def getLastestVid(channel):
+        """Get the lastest video from a youtube channel."""
         channel = channel
         html = requests.get(channel + "/videos").text
         url = "https://www.youtube.com/watch?v=" + re.search('(?<="videoId":").*?(?=")', html).group()
@@ -70,6 +106,7 @@ class AppMain():
         return url
     
     def showVideoDetails(url, num):
+        """Screen that shows the videos info."""
         AppMain.clear()
         Title = ctk.CTkLabel(master=app, text=YouTube(url).title, font=("Arial", 35))
         DesTitle = ctk.CTkLabel(master=app, text="Description", font=("Arial", 20))
@@ -79,15 +116,17 @@ class AppMain():
         bgTop = Label(app, image=AppMain.bgTopImage, bg="#242424")
         
         Decription.insert("0.0", f"""   Description of  "{YouTube(url).title}"   \n\n {YouTube(url).description}""")
-
-        #bgTop.place(x=0, y=-100)
+        
         Title.pack()
+        # bgTop.place(x=0, y=-100)
         buttonplay.place(x=530, y=140+230)
         DesTitle.place(x=10, y=140+200)
         Decription.place(x=10, y=170+200)
         back.place(x=10, y=10)
     
     def HomeScreen():
+        """Home Screen."""
+        
         os.system('cls')
         app.iconphoto(False, AppMain.Logo)
         def Add0(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[0]))
@@ -100,17 +139,8 @@ class AppMain():
         def Add7(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[7]))
         def Add8(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[8]))
         
-        def show0(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[0]), Add0)
-        def show1(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[1]), Add1)
-        def show2(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[2]), Add2)
-        def show3(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[3]), Add3)
-        def show4(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[4]), Add4)
-        def show5(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[5]), Add5)
-        def show6(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[6]), Add6)
-        def show7(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[7]), Add7)
-        def show8(): AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[8]), Add8)
-        
         def ShortenTitle(title):
+            """Shorten the title of the video if it is over 41 char."""
             if len(title) >= 41:
                 short_text = title[0:35]+"..."
                 return short_text
@@ -128,30 +158,30 @@ class AppMain():
         def NewVideos():
             NewVideosLabel = ctk.CTkLabel(master=app, text="New Videos", font=("Arial", 25))
             
-            Key = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[0]))), width= 250, command=show0)
-            Ard = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[1]))), width= 250, command=show1)
-            Chuck = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[2]))), width= 250, command=show2)
-            Rev = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[3]))), width= 250, command=show3)
-            idid = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[4]))), width= 250, command=show4)
+            A = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[0]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[0]), Add0))
+            B = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[1]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[1]), Add1))
+            C = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[2]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[2]), Add2))
+            D = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[3]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[3]), Add3))
+            E = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[4]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[4]), Add4))
             
             NewVideosLabel.place(x=70+280*0+100, y=120)
             
             # top row
-            Key.place(x=70+280*0+100, y=170)
-            Ard.place(x=70+280*1+100, y=170)
-            Chuck.place(x=70+280*2+100, y=170)
+            A.place(x=70+280*0+100, y=170)
+            B.place(x=70+280*1+100, y=170)
+            C.place(x=70+280*2+100, y=170)
             
             # middle row
-            Rev.place(x=70+100, y=170+50)
-            idid.place(x=70+280*2-180, y=170+50)
+            D.place(x=70+100, y=170+50)
+            E.place(x=70+280*2-180, y=170+50)
         
         def CartoonVideos():
             CartoonVideosLabel = ctk.CTkLabel(master=app, text="Cartoon Videos", font=("Arial", 23))
             
-            A = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[5]))), width= 250, command=show5)
-            B = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[6]))), width= 250, command=show6)
-            C = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[7]))), width= 250, command=show7)
-            D = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[8]))), width= 250, command=show8)
+            A = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[5]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[5]), Add5))
+            B = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[6]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[6]), Add6))
+            C = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[7]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[7]), Add7))
+            D = ctk.CTkButton(master=app, text=ShortenTitle(AppMain.getTitle(AppMain.getLastestVid(channel=AppMain.channels[8]))), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.getLastestVid(AppMain.channels[8]), Add8))
             
             # top row
             A.place(x=70+280*0+100, y=170+150)
@@ -169,8 +199,11 @@ class AppMain():
         NewVideos()
         CartoonVideos()
         HomeImage.place(x=350+150, y=40)
+        AppMain.Greating()
     
     def Login():
+        """Login Screen."""
+        
         name_var=StringVar()
         passw_var=StringVar()
 
@@ -212,4 +245,5 @@ if __name__ == "__main__":
     except:
         pass
 
-app.mainloop() # 172 LINE OF CODE!
+# Mainloop
+app.mainloop()
