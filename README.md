@@ -20,6 +20,7 @@ First it has a more improved graphics with customtkinter.
 It has also has title shortening system if the video title is over 41 charters.
 And has a page where you can view the info on the video before playing it.
 Instead of manualy putting the video urls it gets the latest youtube channels video!
+It uses pathlib so that you can just run it without problems with the path!
 Have Fun!
 
 ## Bugs 🐜
