@@ -24,6 +24,5 @@ It uses pathlib so that you can just run it without problems with the path.
 Have Fun!
 
 ## Bugs 🐜
-See the wiki for info! |
-                       v
+See the wiki for info! 
 https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix
