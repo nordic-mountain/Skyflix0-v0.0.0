@@ -3,7 +3,7 @@ This is the new Skyflix!
 Skyflix 4.0.2 has more improvements and features!
 Made in 🐍Python
 
-# 🚀 Moduals
+## 🚀 Moduals
 
 * tkinter
 * customtkinter
@@ -13,7 +13,7 @@ Made in 🐍Python
 * re
 * os
 
-# 😎 Features
+## 😎 Features
 
 Here are the new features!
 First it has a more improved graphics with customtkinter.
@@ -22,4 +22,5 @@ And has a page where you can view the info on the video before playing it.
 Instead of manualy putting the video urls it gets the latest youtube channels video!
 Have Fun!
 
-#
+## Bugs 🐜
+See the wiki for info!
