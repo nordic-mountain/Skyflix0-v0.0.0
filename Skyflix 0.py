@@ -2,6 +2,7 @@
 from tkinter import *
 import customtkinter as ctk
 from pytube import YouTube
+import pathlib
 import random
 import requests
 import re
@@ -20,29 +21,29 @@ app.resizable(False, False)
 # Main class
 class AppMain():
     # Image vars
-    Logo = PhotoImage(file=os.path.join("Images",r"Logo.png"))
-    SkyflixWord = PhotoImage(file=os.path.join("Images",r"SkyFlix.png"))
-    HomeWord = PhotoImage(file=os.path.join("Images",r"Home.png"))
-    SettingsWord = PhotoImage(file=os.path.join("Images",r"Settings.png"))
-    sideBarImage = PhotoImage(file=os.path.join("Images",r"Side Bar.png"))
-    SettingslogoButton = PhotoImage(file=os.path.join("Images",r"settings logo.png"))
-    ProfilePic = PhotoImage(file=os.path.join("Images",r"profile pic.png"))
-    bgTopImage = PhotoImage(file=os.path.join("Images",r"Bg.png"))
+    Logo = PhotoImage(file=pathlib.PurePath(r"Images/Logo.png"))
+    SkyflixWord = PhotoImage(file=pathlib.PurePath(r"Images\SkyFlix.png"))
+    HomeWord = PhotoImage(file=pathlib.PurePath(r"Images\Home.png"))
+    SettingsWord = PhotoImage(file=pathlib.PurePath(r"Images\Settings.png"))
+    sideBarImage = PhotoImage(file=pathlib.PurePath(r"Images\Side Bar.png"))
+    SettingslogoButton = PhotoImage(file=pathlib.PurePath(r"Images\settings logo.png"))
+    ProfilePic = PhotoImage(file=pathlib.PurePath(r"Images\profile pic.png"))
+    bgTopImage = PhotoImage(file=pathlib.PurePath(r"Images\Bg.png"))
     
     # Channel lists
     channels = [
                 # New Video
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                 "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@Danny-Gonzalez",
+                "https://www.youtube.com/@ryan",
+                "https://www.youtube.com/@NetworkChuck",
+                "https://www.youtube.com/user/mrbeast6000",
+                "https://www.youtube.com/@DailyDoseOfInternet",
                 
                 # Cartoons
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@cartoonnetworkuk",
+                "https://www.youtube.com/user/ElmoreStream",
+                "https://www.youtube.com/channel/UCrFslqncMIdjD2WfB6pAcEg",
+                "https://www.youtube.com/channel/UCFuU-5B1eKAWaTeLUu3JuyA"
                 ]
     
     # tools
@@ -80,7 +81,7 @@ class AppMain():
         
     def downloadVid(url):
         """Download the youtube link."""
-        YouTube(url).streams.get_highest_resolution().download(r"video")
+        YouTube(url).streams.get_highest_resolution().download(pathlib.PurePath(r"video"))
     
     def clear():
         """Clear all th wigets in the screen."""
@@ -89,14 +90,18 @@ class AppMain():
             
     def playVid(url):
         """Play the video."""
-        charters = ["|", "'", "?", ",", ":", "~", "#", "$", "%", "^", "/", '"']
+        charters = ["|", "'", "?",
+                    ",", ":", "~",
+                    "#", "$", "%",
+                    "^", "/", '"']
         AppMain.downloadVid(url)
         title = AppMain.getTitle(url=url)
         for x in range(len(charters)):
             title = title.replace(charters[x], "")
         print(title)
-        os.startfile(f"{title}.mp4")
-        
+        os.startfile(pathlib.PurePath(f"video\{title}.mp4"))
+
+# C:\\Users\\Gianclarence Solas\\Desktop\\python books\\Skyflix\\video\\   
     def getLastestVid(channel):
         """Get the lastest video from a youtube channel."""
         channel = channel
@@ -107,6 +112,7 @@ class AppMain():
     
     def showVideoDetails(url, num):
         """Screen that shows the videos info."""
+        app.title("Skyflix 0")
         AppMain.clear()
         Title = ctk.CTkLabel(master=app, text=YouTube(url).title, font=("Arial", 35))
         DesTitle = ctk.CTkLabel(master=app, text="Description", font=("Arial", 20))
@@ -127,6 +133,7 @@ class AppMain():
     def HomeScreen():
         """Home Screen."""
         
+        app.title("Skyflix 0")
         os.system('cls')
         app.iconphoto(False, AppMain.Logo)
         def Add0(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[0]))
@@ -227,6 +234,7 @@ class AppMain():
             print("Skyflix 0 Launched")
             print("Go to my GitHub: https://github.com/TheTechyKid")
         
+        app.title("Skyflix Sign in")
         SkyflixImage = Label(app, image = AppMain.SkyflixWord, bg="#242424")
         UserName = ctk.CTkEntry(master=app, width=300, textvariable=name_var)
         PassWord = ctk.CTkEntry(master=app, width=300, textvariable=passw_var, show = '*')
