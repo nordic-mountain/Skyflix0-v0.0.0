@@ -1,38 +1,37 @@
-# Skyflix-v4.0.2
-This is the new Skyflix!
-Skyflix v4.0.2 has more improvements and features!
-Made in 🐍 Python
+#Skyflix v4.0.2
+Skyflix is a desktop application that allows you to stream YouTube videos right from your desktop. The application is built using Python 3 and various modules like `tkinter`, `pytube`, `pathlib`, and `requests`. It also gets the lastest video from a youtbe channel of your choosing. If you want to put your own YouTube channel links go to the "channels" list and put your own there.
 
-## 🚀 Moduals
+##Features
 
-* tkinter
-* customtkinter
-* pytube
-* requests
-* youtube_dl
-* re
-* os
+* Play the latest videos from selected YouTube channels.
+* Play any YouTube video by entering the URL.
+* View video information and description.
+* Download the video for offline viewing.
 
-## 😎 Features
+##Getting Started
 
-Here are the new features!
-First it has a more improved graphics with customtkinter.
-It has also has title shortening system if the video title is over 41 charters.
-And has a page where you can view the info on the video before playing it.
-Instead of manualy putting the video urls it gets the latest youtube channels video.
-It uses pathlib so that you can just run it without problems with the path.
-Have Fun!
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## How to run!
-To run this download this project run the Skyflix 0.py. Then the password and username is "a".
+###Prerequisites
+* Python 3.x
+* pytube, requests modules
 
-## Bugs 🐜
-See the wiki for info! 
+###Installing
+Download the project and run Skyflix 0.py. The password and username is "a".
+Download the mouduals next.
+
+##Usage
+1. Select a YouTube channel from the sidebar to watch their latest video.
+2. Enter a YouTube video URL to watch it.
+3. Click the "Download" button to download the video for offline viewing.
+4. Click the "Play" button to watch the video.
+
+##Bugs
+See the wiki for more info.
 https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix
 
-## License
+##License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-## Author
-
-* TheTechyKid
+##Author
+*TheTechyKid
