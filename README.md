@@ -36,7 +36,7 @@ See the [wiki](https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyf
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/TheTechyKid/Skyflix-v4.0.2/blob/main/LICENSE) file for details.
 
 ## Author
 
