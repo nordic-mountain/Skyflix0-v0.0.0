@@ -23,6 +23,9 @@ Instead of manualy putting the video urls it gets the latest youtube channels vi
 It uses pathlib so that you can just run it without problems with the path.
 Have Fun!
 
+## How to run!
+To run this download this project run the Skyflix 0.py. Then the password and username is "a".
+
 ## Bugs 🐜
 See the wiki for info! 
 https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix
