@@ -29,3 +29,10 @@ To run this download this project run the Skyflix 0.py. Then the password and us
 ## Bugs 🐜
 See the wiki for info! 
 https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+## Author
+
+* TheTechyKid
