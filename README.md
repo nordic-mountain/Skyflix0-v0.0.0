@@ -32,8 +32,7 @@ Download the mouduals next.
 
 ## Bugs
 
-See the wiki for more info.
-https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix
+See the [wiki]([URL](https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix)) for more info.
 
 ## License
 
