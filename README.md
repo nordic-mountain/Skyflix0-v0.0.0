@@ -32,7 +32,7 @@ Download the mouduals next.
 
 ## Bugs
 
-See the [wiki]((https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix)) for more info.
+See the [wiki](https://github.com/TheTechyKid/Skyflix-v4.0.2/wiki/Issues-On-Skyflix) for more info.
 
 ## License
 
@@ -40,4 +40,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Author
 
-*TheTechyKid
+* TheTechyKid
