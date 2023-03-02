@@ -1,6 +1,6 @@
 # Skyflix v4.0.2
 
-Skyflix is a desktop application that allows you to stream YouTube videos right from your desktop. The application is built using Python 3 and various modules like `tkinter`, `pytube`, `pathlib`, and `requests`. It also gets the lastest video from a youtbe channel of your choosing. If you want to put your own YouTube channel links go to the "channels" list and put your own there.
+Skyflix is a desktop application that allows you to stream YouTube videos right from your desktop. The application is built using Python 3 and various modules like `tkinter`, `pytube`, `pathlib`, and `requests`. It also gets the lastest video from a YouTube channel of your choosing. If you want to put your own YouTube channel links go to the "channels" python list in Skyflix 0.py and put your own there.
 
 ## Features
 
