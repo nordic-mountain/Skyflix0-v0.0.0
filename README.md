@@ -15,7 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * Python 3.x
-* pytube, requests modules, ect...
+* customtkinter==5.0.3, pytube==12.1.2, requests==2.28.2, youtube_dl==2021.12.17
 
 ### Installing
 
@@ -29,6 +29,15 @@ These instructions will get you a copy of the project up and running on your loc
 1. Run `Skyflix 0.py` and enter the password and username with `a`.
 2. Select a video you would like to play.
 3. Hit the play button to play the video!
+
+## Images
+
+<p align="center">
+  <img src=![Sign in](https://user-images.githubusercontent.com/111663675/222920536-1f7a30b6-f605-4430-bbcc-ad5ebf6a1bad.jpg)
+  alt="Sign in" width="600">
+  <br>
+  <em> Your Caption </em>
+</p>
 
 ## Bugs
 
