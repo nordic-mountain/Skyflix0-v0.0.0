@@ -1,11 +1,10 @@
 # Skyflix v4.0.2
 
-Skyflix is a desktop application that allows you to stream YouTube videos right from your desktop. The application is built using Python 3 and various modules like `tkinter`, `pytube`, `pathlib`, and `requests`. It also gets the lastest video from a YouTube channel of your choosing. If you want to put your own YouTube channel links go to the "channels" python list in Skyflix 0.py and put your own there.
+Skyflix is a desktop application that allows you to play the lastest video from a selected channel (e.g., NetworkChuck) using moduals like `customtkinter`, `pytube`, `requests`, and `youtube_dl`. This project was made with Python 🐍. If you want to change the channels you can goto `Skyflix 0.py` and change the channels in the `channels` list.
 
 ## Features
 
 * Play the latest videos from selected YouTube channels.
-* Play any YouTube video by entering the URL.
 * View video information and description.
 * Download the video for offline viewing.
 
@@ -16,19 +15,20 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * Python 3.x
-* pytube, requests modules
+* pytube, requests modules, ect...
 
 ### Installing
 
-Download the project and run Skyflix 0.py. The password and username is "a".
-Download the mouduals next.
+1. Download this project.
+2. Next download the needed mouduals with this command: `pip install -r requirements.txt`.
+3. Run `Skyflix 0.py` and enter the password and username with `a`.
+4. Have fun!
 
 ## Usage
 
-1. Select a YouTube channel from the sidebar to watch their latest video.
-2. Enter a YouTube video URL to watch it.
-3. Click the "Download" button to download the video for offline viewing.
-4. Click the "Play" button to watch the video.
+1. Run `Skyflix 0.py` and enter the password and username with `a`.
+2. Select a video you would like to play.
+3. Hit the play button to play the video!
 
 ## Bugs
 
@@ -41,4 +41,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 ## Author
 
 * TheTechyKid
-* Yo mama!
