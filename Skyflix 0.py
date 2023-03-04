@@ -34,17 +34,17 @@ class AppMain():
     # Channel lists
     channels = [
                 # New Video
-                "https://www.youtube.com/@Danny-Gonzalez",
-                "https://www.youtube.com/@ryan",
-                "https://www.youtube.com/@NetworkChuck",
-                "https://www.youtube.com/user/mrbeast6000",
-                "https://www.youtube.com/@DailyDoseOfInternet",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
                 
                 # Cartoons
-                "https://www.youtube.com/@cartoonnetworkuk",
-                "https://www.youtube.com/user/ElmoreStream",
-                "https://www.youtube.com/channel/UCrFslqncMIdjD2WfB6pAcEg",
-                "https://www.youtube.com/channel/UCFuU-5B1eKAWaTeLUu3JuyA"
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@test"
                 ]
     
     # tools
@@ -76,34 +76,41 @@ class AppMain():
     
     def getTitle(url):
         """Get the youtube links title."""
+        
         url = url
         Title = YouTube(url=url).title
         return Title       
         
     def downloadVid(url):
         """Download the youtube link."""
+        
         YouTube(url).streams.get_highest_resolution().download(pathlib.PurePath(r"video"))
     
     def clear():
         """Clear all th wigets in the screen."""
+        
         for widgets in app.winfo_children():
             widgets.destroy()
             
     def playVid(url):
         """Play the video."""
+
         charters = ["|", "'", "?",
                     ",", ":", "~",
                     "#", "$", "%",
                     "^", "/", '"']
+
         AppMain.downloadVid(url)
         title = AppMain.getTitle(url=url)
         for x in range(len(charters)):
             title = title.replace(charters[x], "")
+
         print(title)
         os.startfile(pathlib.PurePath(f"video\{title}.mp4"))
   
     def getLastestVid(channel):
         """Get the lastest video from a youtube channel."""
+        
         channel = channel
         html = requests.get(channel + "/videos").text
         url = "https://www.youtube.com/watch?v=" + re.search('(?<="videoId":").*?(?=")', html).group()
@@ -112,19 +119,21 @@ class AppMain():
     
     def showVideoDetails(url, num):
         """Screen that shows the videos info."""
+
         app.title("Skyflix 0")
         AppMain.clear()
+        
         Title = ctk.CTkLabel(master=app, text=YouTube(url).title, font=("Arial", 35))
         DesTitle = ctk.CTkLabel(master=app, text="Description", font=("Arial", 20))
         Decription = ctk.CTkTextbox(master=app, height=300, width=500)
         buttonplay = ctk.CTkButton(master=app, text="Play", width=530, command=num)
         back = ctk.CTkButton(master=app, text="<--", command=AppMain.HomeScreen, width=50)
-        bgTop = Label(app, image=AppMain.bgTopImage, bg="#242424")
         
+        # Insert Decription
         Decription.insert("0.0", f"""   Description of  "{YouTube(url).title}"   \n\n {YouTube(url).description}""")
         
+        # Placement
         Title.pack()
-        # bgTop.place(x=0, y=-100)
         buttonplay.place(x=530, y=140+230)
         DesTitle.place(x=10, y=140+200)
         Decription.place(x=10, y=170+200)
@@ -135,7 +144,7 @@ class AppMain():
         
         app.title("Skyflix 0")
         os.system('cls')
-        app.iconphoto(False, AppMain.Logo)
+        
         def Add0(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[0]))
         def Add1(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[1]))
         def Add2(): AppMain.playVid(AppMain.getLastestVid(AppMain.channels[2]))
@@ -197,7 +206,6 @@ class AppMain():
             
             # middle row
             D.place(x=70+100, y=170+50+150)
-            
             CartoonVideosLabel.place(x=70+280*0+100, y=270)
         
         sideBar()
@@ -205,40 +213,48 @@ class AppMain():
         HomeImage = Label(app, image = AppMain.HomeWord, bg="#242424")
         NewVideos()
         CartoonVideos()
-        HomeImage.place(x=350+150, y=40)
         AppMain.Greating()
+        
+        HomeImage.place(x=350+150, y=40)
     
     def Login():
         """Login Screen."""
-        
+
         name_var=StringVar()
         passw_var=StringVar()
 
         def outputSignIn():
-            name=name_var.get()
-            password=passw_var.get()
-            if name == "a" and password == "a":
-                In = ctk.CTkLabel(master=app, text="       correct")
+            Username=name_var.get()
+            Password=passw_var.get()
+
+            if Username and Password == "a":
+                In = ctk.CTkLabel(master=app, text=" "*6+"correct")
                 In.place(x=350+150, y=480)
                 AppMain.clear()
                 AppMain.HomeScreen()
-            elif name == "" and password == "":
-                In = ctk.CTkLabel(master=app, text="     No Value")
+
+            elif Username and Password == "":
+                In = ctk.CTkLabel(master=app, text=" "*5+"No Value")
                 In.place(x=350+150, y=480)
+
             else:
-                In = ctk.CTkLabel(master=app, text="     Incorrect")
+                In = ctk.CTkLabel(master=app, text=" "*5+"Incorrect")
                 In.place(x=350+150, y=480)
+
+            # Clear the Username and Passwords
             name_var.set("")
             passw_var.set("")
+            
             os.system("cls")
-            print("Skyflix 0 Launched")
-            print("Go to my GitHub: https://github.com/TheTechyKid")
+            print("Skyflix 0 Launched\nGo to my GitHub: https://github.com/TheTechyKid")
         
         app.title("Skyflix Sign in")
         SkyflixImage = Label(app, image = AppMain.SkyflixWord, bg="#242424")
         UserName = ctk.CTkEntry(master=app, width=300, textvariable=name_var)
         PassWord = ctk.CTkEntry(master=app, width=300, textvariable=passw_var, show = '*')
         SignIn = ctk.CTkButton(master=app, text="Sign In", command=outputSignIn)
+        
+        # Placement
         SkyflixImage.place(x=300+100,y=70)
         UserName.place(x=300+100,y=350)
         PassWord.place(x=300+100,y=400)
@@ -246,12 +262,10 @@ class AppMain():
 
     def __init__(self):
         AppMain.Login()
+
     
 if __name__ == "__main__":
-    try:
-        AppMain()
-    except:
-        pass
+    AppMain()   
 
 # Mainloop
 app.mainloop()
