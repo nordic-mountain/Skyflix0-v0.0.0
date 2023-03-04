@@ -33,11 +33,8 @@ These instructions will get you a copy of the project up and running on your loc
 ## Images
 
 <p align="center">
-  <img src="![Sign in](https://user-images.githubusercontent.com/111663675/222920860-90cba308-bb46-4dec-bc61-97bd680e339f.jpg)
-"
-  alt="Signin" width="600">
-  <br>
-  <em> Sign in </em>
+  ![Sign in](https://user-images.githubusercontent.com/111663675/222920902-f109a000-749d-404d-b779-c25dac3c472c.jpg)
+| _`complex_example.py` on Windows 11 with dark mode and 'blue' theme_
 </p>
 
 ## Bugs
