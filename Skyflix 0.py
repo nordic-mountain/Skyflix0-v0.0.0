@@ -20,8 +20,9 @@ app.resizable(False, False)
 
 # Main class
 class AppMain():
+    """Main App Class. Version 4.0.2."""
+    
     # Image vars
-    Logo = PhotoImage(file=pathlib.PurePath(r"Images/Logo.png"))
     SkyflixWord = PhotoImage(file=pathlib.PurePath(r"Images\SkyFlix.png"))
     HomeWord = PhotoImage(file=pathlib.PurePath(r"Images\Home.png"))
     SettingsWord = PhotoImage(file=pathlib.PurePath(r"Images\Settings.png"))
@@ -100,8 +101,7 @@ class AppMain():
             title = title.replace(charters[x], "")
         print(title)
         os.startfile(pathlib.PurePath(f"video\{title}.mp4"))
-
-# C:\\Users\\Gianclarence Solas\\Desktop\\python books\\Skyflix\\video\\   
+  
     def getLastestVid(channel):
         """Get the lastest video from a youtube channel."""
         channel = channel
