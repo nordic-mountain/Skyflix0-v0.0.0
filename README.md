@@ -33,7 +33,8 @@ These instructions will get you a copy of the project up and running on your loc
 ## Images
 
 <p align="center">
-  <img src="![Signin](https://user-images.githubusercontent.com/111663675/222920536-1f7a30b6-f605-4430-bbcc-ad5ebf6a1bad.jpg)"
+  <img src="![Sign in](https://user-images.githubusercontent.com/111663675/222920860-90cba308-bb46-4dec-bc61-97bd680e339f.jpg)
+"
   alt="Signin" width="600">
   <br>
   <em> Sign in </em>
