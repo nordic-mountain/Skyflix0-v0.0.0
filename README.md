@@ -1,6 +1,6 @@
 # Skyflix v4.0.2
 
-Skyflix is a desktop application that allows you to play the lastest video from a selected channel (e.g., NetworkChuck) using moduals like `customtkinter`, `pytube`, `requests`, and `youtube_dl`. This project was made with Python 🐍. If you want to change the channels you can goto `Skyflix 0.py` and change the channels in the `channels` list.
+Skyflix is a desktop application that allows you to play the lastest video from a selected channel (e.g., NetworkChuck) using moduals like `customtkinter`, `pytube`, `requests`, and `youtube_dl`. This project was made with Python 🐍. If you want to change the channels you can go to `Skyflix 0.py` and change the channels in the `channels` list.
 
 ## Features
 
