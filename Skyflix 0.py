@@ -27,24 +27,22 @@ class AppMain():
     HomeWord = PhotoImage(file=pathlib.PurePath(r"Images\Home.png"))
     SettingsWord = PhotoImage(file=pathlib.PurePath(r"Images\Settings.png"))
     sideBarImage = PhotoImage(file=pathlib.PurePath(r"Images\Side Bar.png"))
-    SettingslogoButton = PhotoImage(file=pathlib.PurePath(r"Images\settings logo.png"))
     ProfilePic = PhotoImage(file=pathlib.PurePath(r"Images\profile pic.png"))
-    bgTopImage = PhotoImage(file=pathlib.PurePath(r"Images\Bg.png"))
     
     # Channel lists
     channels = [
                 # New Video
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
+                "https://www.youtube.com/@Danny-Gonzalez",
+                "https://www.youtube.com/@ryan",
+                "https://www.youtube.com/@NetworkChuck",
+                "https://www.youtube.com/user/mrbeast6000",
+                "https://www.youtube.com/@DailyDoseOfInternet",
                 
                 # Cartoons
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test",
-                "https://www.youtube.com/@test"
+                "https://www.youtube.com/@cartoonnetworkuk",
+                "https://www.youtube.com/user/ElmoreStream",
+                "https://www.youtube.com/channel/UCrFslqncMIdjD2WfB6pAcEg",
+                "https://www.youtube.com/channel/UCFuU-5B1eKAWaTeLUu3JuyA"
                 ]
     
     # tools
