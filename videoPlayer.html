@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyflix 0 Player</title>
+    <style>
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Adjust alignment */
+            height: 100vh; /* 100% viewport height */
+            padding-top: 20px; /* Add some padding to push it up */
+        }
+
+        .youtube-container {
+            border-radius: 20px; /* Adjust the value to control the curve */
+            overflow: hidden; /* Hide the overflow content */
+            width: 560px; /* Set the desired width */
+            height: 315px; /* Set the desired height */
+        }
+
+        /* Style the embedded YouTube iframe */
+        .youtube-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove the iframe border */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-container">
+        <div class="youtube-container">
+            <iframe id="video"
+                src="https://www.youtube.com/embed/?autoplay=1"
+                allowfullscreen
+                autoplay
+            ></iframe>
+        </div>
+    </div>
+</body>
+<script src="com.js"></script>
+<script src="data.js"></script>
+</html>
