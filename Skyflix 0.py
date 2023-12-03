@@ -13,6 +13,8 @@ import webbrowser
 import secrets
 import scrapetube
 
+username = "a"
+
 # Appearance
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
@@ -42,7 +44,7 @@ class AppMain():
                 "https://www.youtube.com/@danielthrasher",
                 "https://www.youtube.com/@kallmekris",
                 "https://www.youtube.com/@Blackthornprod",
-                "https://www.youtube.com/@Corridor"
+                "https://www.youtube.com/@doctor4t"
                 ]
     
     # tools
@@ -137,10 +139,13 @@ class AppMain():
         random_video = secrets.choice(video_list)
         return "https://www.youtube.com/watch?v="+random_video
     
+    def GetThumUrl(url):
+        image_url = YouTube(url).thumbnail_url
+        return image_url
+    
     @staticmethod
     def showURLImage(url, size):
-        image_url = YouTube(url).thumbnail_url
-        response = requests.get(image_url)
+        response = requests.get(url)
         image_data = BytesIO(response.content)
         image_pil = Image.open(image_data)
 
@@ -165,8 +170,8 @@ class AppMain():
     def showVideoDetails(url, num):
         app.title("Skyflix 0")
         AppMain.clear()
-
-        imageURL = AppMain.showURLImage(url, 3)
+        urlCleansed = AppMain.GetThumUrl(url)
+        imageURL = AppMain.showURLImage(urlCleansed, 3)
         image_label = tk.Label(app, image=imageURL)
         
         Title = ctk.CTkLabel(master=app, text=AppMain.ShortenTitle(YouTube(url).title), font=("Arial", 35))
@@ -230,13 +235,17 @@ class AppMain():
             H = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.h)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.h, Add7))
             I = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.i)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.i, Add8))
             
-            
             sidebar = ctk.CTkFrame(master=app, width=200, height=700)
             hyperlink = ctk.CTkButton(sidebar, text="Github", command=lambda: webbrowser.open('https://github.com/TheTechyKid/Skyflix-v4.0.2'), width=180)
+            userImgUrl = AppMain.showURLImage("https://icon-library.com/images/avatar-icon/avatar-icon-6.jpg", 5)
+            userImage = ctk.CTkLabel(sidebar, image=userImgUrl, text="")
+            userName = ctk.CTkLabel(sidebar, text="TheTechyKid", font=("Arial", 15))
             
             NewVideosLabel.place(x=70+280*0+100+120, y=120)
+            userImage.place(x=45, y=20)
             sidebar.grid(row=0, column=0, padx=0, pady=0, sticky="nsew")
             hyperlink.place(x=10, y=655)
+            userName.place(x=50, y=125)
             
             # top row
             A.place(x=70+280*0+175, y=170)
@@ -267,7 +276,7 @@ class AppMain():
             Username=name_var.get()
             Password=passw_var.get()
 
-            if Username and Password == "a":
+            if Username and Password == Username:
                 In = ctk.CTkLabel(master=app, text=" "*6+"correct")
                 In.place(x=350+150, y=480)
                 AppMain.clear()
