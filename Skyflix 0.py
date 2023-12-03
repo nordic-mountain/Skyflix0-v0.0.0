@@ -5,19 +5,19 @@ import tkinter as tk
 import customtkinter as ctk
 from pytube import YouTube
 import pathlib
-import random
 import requests
 import os
 from PIL import Image, ImageTk
 from io import BytesIO
 import webbrowser
-from youtubesearchpython import SearchVideos
-import random
+import secrets
 import scrapetube
 
 # Appearance
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
+
+FILE_PATH = r"C:\Users\Gianclarence Solas\Desktop\python books\Skyflix"
 
 # App
 app = ctk.CTk()
@@ -31,22 +31,18 @@ class AppMain():
     
     # Image vars
     SkyflixWord = tk.PhotoImage(file=pathlib.PurePath(r"Images\SkyFlix.png"))
-    HomeWord = tk.PhotoImage(file=pathlib.PurePath(r"Images\Home.png"))
-    SettingsWord = tk.PhotoImage(file=pathlib.PurePath(r"Images\Settings.png"))
-    sideBarImage = tk.PhotoImage(file=pathlib.PurePath(r"Images\Side Bar.png"))
-    ProfilePic = tk.PhotoImage(file=pathlib.PurePath(r"Images\profile pic.png"))
     
     # Channel lists
     channels = [
-                "https://www.youtube.com/@Danny-Gonzalez",
+                "https://www.youtube.com/@TheRealCarvs",
                 "https://www.youtube.com/@ryan",
                 "https://www.youtube.com/@NetworkChuck",
-                "https://www.youtube.com/user/mrbeast6000",
+                "https://www.youtube.com/@TheTaleFoundry",
                 "https://www.youtube.com/@DailyDoseOfInternet",
                 "https://www.youtube.com/@danielthrasher",
-                "https://www.youtube.com/@ThatMumboJumbo",
-                "https://www.youtube.com/@Logdotzip",
-                "https://www.youtube.com/@jacksepticeye"
+                "https://www.youtube.com/@kallmekris",
+                "https://www.youtube.com/@Blackthornprod",
+                "https://www.youtube.com/@Corridor"
                 ]
     
     # tools
@@ -79,7 +75,7 @@ class AppMain():
                        "You inspire others with your actions!",
                        "You're a valuable asset to any team!",
                        "You're a kind and caring individual!"]
-        ranComliment = random.choice(compliments)
+        ranComliment = secrets.choice(compliments)
         Label = ctk.CTkLabel(master=app, text=ranComliment)
         Label.place(x=470, y=650)
     
@@ -99,7 +95,7 @@ class AppMain():
     
     @staticmethod
     def clear():
-        """Clear all th wigets in the screen."""
+        """Clear all the wigets in the screen."""
         
         for widgets in app.winfo_children():
             widgets.destroy()
@@ -118,9 +114,9 @@ class AppMain():
         """
         
         with open('data.js', 'w') as f:
-            f.write(javascript_code)
+            f.write(javascript_code) 
 
-        file_path = r'C:\Users\Gianclarence Solas\Desktop\python books\Skyflix\videoPlayer.html'
+        file_path = FILE_PATH+r"\videoPlayer.html"
         print(file_path)
         browser = webbrowser.get('"C:/Program Files/Google/Chrome/Application/chrome.exe" %s')
         browser.open(file_path)
@@ -130,12 +126,15 @@ class AppMain():
         """Get the lastest video from a youtube channel."""
         
         video_list = []
-        videos = scrapetube.get_channel(channel_url=channel, limit=4)
+        amount_of_videos = 10
+        videos = scrapetube.get_channel(channel_url=channel, limit=amount_of_videos)
 
         for video in videos:
             video_list.append(video['videoId'])
             
-        random_video = random.choice(video_list)
+        print(video_list)
+            
+        random_video = secrets.choice(video_list)
         return "https://www.youtube.com/watch?v="+random_video
     
     @staticmethod
@@ -173,7 +172,7 @@ class AppMain():
         Title = ctk.CTkLabel(master=app, text=AppMain.ShortenTitle(YouTube(url).title), font=("Arial", 35))
         
         DesTitle = ctk.CTkLabel(master=app, text="Description", font=("Arial", 20))
-        Decription = ctk.CTkTextbox(master=app, height=300, width=500)
+        Decription = ctk.CTkTextbox(master=app, height=320, width=1077)
         buttonplay = ctk.CTkButton(master=app, text="Play", width=530, command=num)
         back = ctk.CTkButton(master=app, text="<--", command=AppMain.HomeScreen, width=50)
         
@@ -183,8 +182,8 @@ class AppMain():
         # Placement
         image_label.pack()
         Title.pack()
-        buttonplay.place(x=530, y=140 + 230)
-        DesTitle.place(x=10, y=190 + 220)
+        buttonplay.place(x=285, y=140+160)
+        DesTitle.place(x=10, y=190+150)
         Decription.place(x=10, y=170 + 200)
         back.place(x=10, y=10)
 
@@ -218,16 +217,8 @@ class AppMain():
         def Add7(): AppMain.playVid(AppMain.h)
         def Add8(): AppMain.playVid(AppMain.i)
         
-        def sideBar():
-            SideBar = tk.Label(app, image = AppMain.sideBarImage, bg="#242424")
-            SideBar.place(x=-2, y=-2)
-        
-        def Icon():
-            LabelPic = tk.Label(app, image=AppMain.ProfilePic, bg="#3C3C3C")
-            LabelPic.place(x=17, y=10)
-        
         def Videos():
-            NewVideosLabel = ctk.CTkLabel(master=app, text="Videos", font=("Arial", 25))
+            NewVideosLabel = ctk.CTkLabel(master=app, text="Videos", font=("Arial", 30))
             
             A = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.a)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.a, Add0))
             B = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.b)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.b, Add1))
@@ -239,30 +230,31 @@ class AppMain():
             H = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.h)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.h, Add7))
             I = ctk.CTkButton(master=app, text=AppMain.ShortenTitle(AppMain.getTitle(AppMain.i)), width= 250, command=lambda: AppMain.showVideoDetails(AppMain.i, Add8))
             
-            NewVideosLabel.place(x=70+280*0+100, y=120)
+            
+            sidebar = ctk.CTkFrame(master=app, width=200, height=700)
+            hyperlink = ctk.CTkButton(sidebar, text="Github", command=lambda: webbrowser.open('https://github.com/TheTechyKid/Skyflix-v4.0.2'), width=180)
+            
+            NewVideosLabel.place(x=70+280*0+100+120, y=120)
+            sidebar.grid(row=0, column=0, padx=0, pady=0, sticky="nsew")
+            hyperlink.place(x=10, y=655)
             
             # top row
-            A.place(x=70+280*0+100, y=170)
-            B.place(x=70+280*1+100, y=170)
-            C.place(x=70+280*2+100, y=170)
+            A.place(x=70+280*0+175, y=170)
+            B.place(x=70+280*1+175, y=170)
+            C.place(x=70+280*2+175, y=170)
             
             # middle row
-            D.place(x=70+100, y=170+50)
-            E.place(x=70+280*2-180, y=170+50)
-            F.place(x=70+280*3-180, y=170+50)
+            D.place(x=70+175,        y=170+50)
+            E.place(x=70+280*2-105, y=170+50)
+            F.place(x=70+280*3-105, y=170+50)
             
             # bottom row
-            G.place(x=70+280*0+100, y=170+100)
-            H.place(x=70+280*1+100, y=170+100)
-            I.place(x=70+280*2+100, y=170+100)
-        
-        sideBar()
-        Icon()
-        HomeImage = tk.Label(app, image = AppMain.HomeWord, bg="#242424")
+            G.place(x=70+280*0+175, y=170+100)
+            H.place(x=70+280*1+175, y=170+100)
+            I.place(x=70+280*2+175, y=170+100)
+
         Videos()
         AppMain.Greating()
-        
-        HomeImage.place(x=350+150, y=40)
     
     @staticmethod
     def Login():
