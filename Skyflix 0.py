@@ -12,6 +12,8 @@ from io import BytesIO
 import webbrowser
 import secrets
 import scrapetube
+from rich.console import Console
+from rich.table import Table
 
 username = "a"
 
@@ -27,6 +29,15 @@ app.geometry("1100x700")
 app.title("Skyflix 0")
 app.resizable(False, False)
 
+def get_data(file):
+    with open(file) as f:
+        link_data = []
+        raw_data = f.readlines()
+        for link in raw_data:
+            x = link.replace("\n", "")
+            link_data.append(x)
+        return link_data
+
 # Main class
 class AppMain():
     """Main App Class. Version 5.0.2."""
@@ -35,17 +46,7 @@ class AppMain():
     SkyflixWord = tk.PhotoImage(file=pathlib.PurePath(r"Images\SkyFlix.png"))
     
     # Channel lists
-    channels = [
-                "https://www.youtube.com/@TheRealCarvs",
-                "https://www.youtube.com/@ryan",
-                "https://www.youtube.com/@NetworkChuck",
-                "https://www.youtube.com/@TheTaleFoundry",
-                "https://www.youtube.com/@DailyDoseOfInternet",
-                "https://www.youtube.com/@danielthrasher",
-                "https://www.youtube.com/@kallmekris",
-                "https://www.youtube.com/@Blackthornprod",
-                "https://www.youtube.com/@doctor4t"
-                ]
+    channels = get_data("data.txt")
     
     # tools
     @staticmethod
@@ -134,9 +135,8 @@ class AppMain():
         for video in videos:
             video_list.append(video['videoId'])
             
-        print(video_list)
-            
         random_video = secrets.choice(video_list)
+        print(YouTube("https://www.youtube.com/watch?v="+random_video).title)
         return "https://www.youtube.com/watch?v="+random_video
     
     def GetThumUrl(url):
