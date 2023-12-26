@@ -46,7 +46,7 @@ These instructions will get you a copy of the project up and running on your loc
 </p>
 
 
-![Video des](https://user-images.githubusercontent.com/111663675/222921038-f496a673-4576-40d3-b59b-749023da262e.jpg)
+![Video des]([Video Screen.png](https://github.com/TheTechyKid/Skyflix0-v0.0.0/blob/347a511b41ed62e47dae1dee3daf44671fcfbed2/Video%20Screen.png))
 <p align="center">
  <em> Video Des </em>
 </p>
