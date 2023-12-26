@@ -12,8 +12,8 @@ from io import BytesIO
 import webbrowser
 import secrets
 import scrapetube
-from rich.console import Console
-from rich.table import Table
+from rich.progress import Progress
+import time
 
 username = "a"
 
@@ -109,11 +109,7 @@ class AppMain():
 
         data = url.replace("https://www.youtube.com/watch?v=", "")
 
-        javascript_code = f"""var pythonData = '{str(data)}';
-        var videoFrame = document.getElementById('video');
-        if (videoFrame) {{
-            videoFrame.src = 'https://www.youtube.com/embed/' + pythonData;
-        }}
+        javascript_code = f"""var pythonData = '{str(data)}';\nvar videoFrame = document.getElementById('video');\nif (videoFrame) {{\n    videoFrame.src = 'https://www.youtube.com/embed/' + pythonData;\n}}
         """
         
         with open('data.js', 'w') as f:
@@ -136,7 +132,7 @@ class AppMain():
             video_list.append(video['videoId'])
             
         random_video = secrets.choice(video_list)
-        print(YouTube("https://www.youtube.com/watch?v="+random_video).title)
+        
         return "https://www.youtube.com/watch?v="+random_video
     
     def GetThumUrl(url):
@@ -193,7 +189,7 @@ class AppMain():
         back.place(x=10, y=10)
 
         app.mainloop()  # Start the main event loop
-    
+
     a = getLastestVid(channels[0])
     b = getLastestVid(channels[1])
     c = getLastestVid(channels[2])
@@ -201,8 +197,14 @@ class AppMain():
     e = getLastestVid(channels[4])
     f = getLastestVid(channels[5])
     g = getLastestVid(channels[6])
-    h = getLastestVid(channels[7])
+    h = getLastestVid(channels[7])   
     i = getLastestVid(channels[8])
+    
+    with Progress() as progress:
+        task1 = progress.add_task("[red]Fetching Data...[/]", total=10)
+        while not progress.finished:
+            progress.update(task1, advance=2)
+            time.sleep(0.8)
     
     @staticmethod
     def HomeScreen():
